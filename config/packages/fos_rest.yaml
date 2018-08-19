@@ -1,0 +1,6 @@
+fos_rest:
+  routing_loader:
+    include_format: true
+  format_listener:
+    rules:
+    - { path: ^/, prefer_extension: true, fallback_format: json, priorities: [ json, xml ] }
