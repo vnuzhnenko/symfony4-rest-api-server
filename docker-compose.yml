@@ -1,0 +1,22 @@
+version: "3.0"
+services:
+    app:
+        build: .
+        depends_on:
+            - db
+        environment:
+            ENV_DB_HOST: "db"
+            ENV_DB_USER: "todoapp"
+            ENV_DB_NAME: "todoapp"
+            ENV_DB_PASSWORD: "83nv2ifm"
+            ENV_DB_PORT: 3306
+        ports:
+            - "8080:8080"
+    db:
+        image: "mysql:5.7"
+        environment:
+            #MYSQL_RANDOM_ROOT_PASSWORD: "yes"
+            MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
+            MYSQL_DATABASE: "todoapp"
+            MYSQL_USER: "todoapp"
+            MYSQL_PASSWORD: "83nv2ifm"
