@@ -54,7 +54,7 @@ class TaskController extends FOSRestController
 
     /**
      * @param string $id
-     * @return JsonResponse
+     * @return \Symfony\Component\HttpFoundation\Response
      */
     public function getAction(string $id)
     {
@@ -77,6 +77,7 @@ class TaskController extends FOSRestController
         $view = $this->view(
             $this->taskRepository->findAll()
         );
+
         return $this->handleView($view);
     }
 
@@ -98,6 +99,10 @@ class TaskController extends FOSRestController
                 $this->view(['status' => 'ok'], Response::HTTP_CREATED)
             );
         }
+
+        return $this->handleView(
+            $this->view(['status' => 'error'], Response::HTTP_BAD_REQUEST)
+        );
     }
 
     /**
@@ -110,6 +115,7 @@ class TaskController extends FOSRestController
         $this->taskService->delete($task);
 
         $view = $this->view(null, Response::HTTP_NO_CONTENT);
+
         return $this->handleView($view);
     }
 
@@ -134,8 +140,8 @@ class TaskController extends FOSRestController
         }
 
         $this->taskService->modify($task);
-
         $view = $this->view(null, Response::HTTP_NO_CONTENT);
+
         return $this->handleView($view);
     }
 }
