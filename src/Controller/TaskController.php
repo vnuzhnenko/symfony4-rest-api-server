@@ -94,7 +94,7 @@ class TaskController extends FOSRestController
             return $this->handleView($this->view($form));
         }
 
-        if ($this->taskService->create($form->getData())) {
+        if ($this->taskService->create($form->getData(), $this->getUser())) {
             return $this->handleView(
                 $this->view(['status' => 'ok'], Response::HTTP_CREATED)
             );

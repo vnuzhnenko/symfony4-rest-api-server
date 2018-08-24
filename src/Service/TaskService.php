@@ -3,6 +3,7 @@
 namespace App\Service;
 
 use App\Entity\Task;
+use App\Entity\User;
 use Doctrine\ORM\EntityManagerInterface;
 
 class TaskService
@@ -22,9 +23,10 @@ class TaskService
      * @param Task $task
      * @return bool
      */
-    public function create(Task $task): bool
+    public function create(Task $task, User $user): bool
     {
         try {
+            $task->setUser($user);
             $task->setCreatedAt(new \DateTimeImmutable());
             $this->entityManager->persist($task);
             $this->entityManager->flush();
