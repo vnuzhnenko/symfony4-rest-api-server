@@ -20,8 +20,12 @@
         <!-- ###+ lexik/jwt-authentication-bundle ### -->
         <env name="JWT_SECRET_KEY" value="%kernel.project_dir%/config/jwt/private.pem"/>
         <env name="JWT_PUBLIC_KEY" value="%kernel.project_dir%/config/jwt/public.pem"/>
-        <env name="JWT_PASSPHRASE" value="56efb8d27badbe9ee0bb7abf32048493"/>
+        <!--env name="JWT_PASSPHRASE" value="56efb8d27badbe9ee0bb7abf32048493"/-->
+        <env name="JWT_PASSPHRASE" value="da20ac99376b17eb2cc639c38d0ee672"/>
         <!-- ###- lexik/jwt-authentication-bundle ### -->
+
+        <env name="AUTH_DEFAULT_USERNAME" value="todouser"/>
+        <env name="AUTH_DEFAULT_PASSWORD" value="todopass"/>
     </php>
 
     <testsuites>
