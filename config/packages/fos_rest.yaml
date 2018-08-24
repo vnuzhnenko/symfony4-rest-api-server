@@ -1,6 +1,7 @@
 fos_rest:
   routing_loader:
-    include_format: true
+    #include_format: true
+    default_format: json
   format_listener:
     rules:
     - { path: ^/, prefer_extension: true, fallback_format: json, priorities: [ json, xml ] }
