@@ -4,4 +4,4 @@ fos_rest:
     default_format: json
   format_listener:
     rules:
-    - { path: ^/, prefer_extension: true, fallback_format: json, priorities: [ json, xml ] }
+    - { path: ^/, prefer_extension: true, fallback_format: json, priorities: [ json ] }
