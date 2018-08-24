@@ -30,7 +30,7 @@ class TasksApiFunctionalTest extends BaseApiControllerTestCase
     public function testAddNewValidTask($content, $completed)
     {
         $response = $this->createNewTask($content, $completed);
-        $this->assertTrue($response->isSuccessful(), $response->getContent());
+        $this->assertJsonResponse($response, Response::HTTP_CREATED);
     }
 
     /**
@@ -39,6 +39,7 @@ class TasksApiFunctionalTest extends BaseApiControllerTestCase
     public function testAddNewInvalidTask($content, $completed)
     {
         $response = $this->createNewTask($content, $completed);
+        //$this->assertJsonResponse($response, Response::HTTP_OK);
         $this->assertFalse($response->isSuccessful(), $response->getContent());
     }
 
@@ -53,8 +54,8 @@ class TasksApiFunctionalTest extends BaseApiControllerTestCase
             'content' => $content,
             'completed' => $completed
         ];
-        $response = $this->client->request('POST', '/api/tasks',[], [], $this->getServerParams(), json_encode($payload));
-        return $response;
+        $this->client->request('POST', '/api/tasks',[], [], $this->getServerParams(), json_encode($payload));
+        return $this->client->getResponse();
     }
 
     public function validTaskDataProvider(): array
@@ -68,19 +69,23 @@ class TasksApiFunctionalTest extends BaseApiControllerTestCase
                 'This is a content of a new task',
                 true
             ],
-            'a new valid task with empty content' => [
-                '',
-                false
-            ],
         ];
     }
 
     public function invalidTaskDataProvider(): array
     {
         return [
-            'a new invalid task' => [
+            'a new invalid task with empty content' => [
+                '',
+                false
+            ],
+            'a new invalid task with empty content and undefined status' => [
                 '',
                 null
+            ],
+            'a new invalid task with a huge content' => [
+                str_repeat('some text ', 8192),
+                true
             ],
         ];
     }
