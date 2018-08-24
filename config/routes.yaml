@@ -1,8 +1,10 @@
 #index:
 #    path: /
 #    controller: App\Controller\DefaultController::index
-tasks:
+api_tasks:
     type: rest
+    prefix: /api
     resource: App\Controller\TaskController
+
 api_login_check:
     path: /api/login_check
