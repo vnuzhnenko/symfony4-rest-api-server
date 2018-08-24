@@ -21,8 +21,8 @@ class TaskType extends AbstractType
     {
         $resolver->setDefaults([
             'data_class' => Task::class,
-	    'allow_extra_fields' => true,
-	    'csrf_protection'    => false,
+            'allow_extra_fields' => true,
+            'csrf_protection'    => false,
         ]);
     }
 }

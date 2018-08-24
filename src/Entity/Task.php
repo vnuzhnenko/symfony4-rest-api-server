@@ -3,6 +3,7 @@
 namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\TaskRepository")
@@ -23,6 +24,8 @@ class Task
     private $user;
 
     /**
+     * @Assert\Length(max=8192)
+     * @Assert\NotBlank()
      * @ORM\Column(type="string", length=8192)
      */
     private $content;
