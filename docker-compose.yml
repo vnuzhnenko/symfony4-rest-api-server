@@ -2,6 +2,7 @@ version: "3.0"
 services:
     app:
         build: .
+        container_name: todo_app
         depends_on:
             - db
         environment:
@@ -14,6 +15,7 @@ services:
             - "8080:8080"
     db:
         image: "mysql:5.7"
+        container_name: todo_db
         environment:
             #MYSQL_RANDOM_ROOT_PASSWORD: "yes"
             MYSQL_ALLOW_EMPTY_PASSWORD: "yes"
