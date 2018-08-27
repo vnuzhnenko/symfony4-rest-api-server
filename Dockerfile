@@ -1,6 +1,8 @@
 FROM php:7.1-cli
 
-RUN docker-php-ext-install pdo_mysql
+RUN apt-get update
+RUN apt-get -y install zlib1g-dev
+RUN docker-php-ext-install zip pdo_mysql
 
 COPY ./ /var/www/todoapp
 WORKDIR /var/www/todoapp
