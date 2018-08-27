@@ -12,6 +12,6 @@ TODO:
 -----
 
 * Use ACL via Symfony voters
-* Avoid from any HTML in the HTTP responses
+* Avoid from any HTML in the HTTP responses (including errors and exceptions)
 * Any 'composer install' activity should be executed outside of image building and container execution
 * Bring database configuration to a dedicated environment file
