@@ -1,4 +1,5 @@
 version: "3.0"
+
 services:
     app:
         build: .
@@ -6,11 +7,12 @@ services:
         depends_on:
             - db
         environment:
-            ENV_DB_HOST: "db"
-            ENV_DB_USER: "todoapp"
-            ENV_DB_NAME: "todoapp"
-            ENV_DB_PASSWORD: "83nv2ifm"
-            ENV_DB_PORT: 3306
+            #ENV_DB_HOST: "db"
+            #ENV_DB_USER: "todoapp"
+            #ENV_DB_NAME: "todoapp"
+            #ENV_DB_PASSWORD: "83nv2ifm"
+            #ENV_DB_PORT: 3306
+            DATABASE_URL: "mysql://todoapp:83nv2ifm@db:3306/todoapp"
         ports:
             - "8080:8080"
     db:
